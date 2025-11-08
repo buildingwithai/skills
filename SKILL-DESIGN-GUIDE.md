@@ -10,6 +10,7 @@ This guide provides architectural patterns, organizational best practices, and f
 - [Token Costs & Limits](#token-costs--limits)
 - [File & Folder Limits](#file--folder-limits)
 - [Organizational Patterns](#organizational-patterns)
+- [Modular Skills: Composing Multiple Skills](#modular-skills-composing-multiple-skills)
 - [When to Use Which Structure](#when-to-use-which-structure)
 - [Structure Comparison: Core/Advanced vs Phase-Based](#structure-comparison-coreadvanced-vs-phase-based)
 - [Decision Framework](#decision-framework)
@@ -1136,6 +1137,269 @@ Includes:
 - Launch sequence for unknown brand
 - Metrics specific to new product
 ```
+
+---
+
+## Modular Skills: Composing Multiple Skills
+
+One of the most powerful patterns in Claude Skills is **skill composition** - creating modular skills that reference and build on each other. This approach enables code reuse, clearer boundaries, and easier maintenance.
+
+### The Modular Pattern
+
+Instead of creating monolithic skills that try to do everything, split functionality into focused, composable skills that reference each other.
+
+**Example: Positioning → Messaging → Rollout & Launch**
+
+Instead of one massive "product-marketing" skill, create three focused skills:
+
+```
+pmm-skills/
+├── positioning/          # Standalone: Create positioning
+│   └── SKILL.md → References: messaging, rollout-and-launch (as next steps)
+├── messaging/            # Depends on: positioning
+│   └── SKILL.md → Prerequisites: positioning | Next: rollout-and-launch
+└── rollout-and-launch/   # Depends on: positioning, messaging
+    └── SKILL.md → Prerequisites: positioning, messaging
+```
+
+### How Skills Reference Each Other
+
+Skills reference other skills through explicit sections in SKILL.md:
+
+#### In Prerequisites Section
+
+```markdown
+## Prerequisites
+
+### Positioning Must Be Complete
+
+Messaging translates positioning into customer language. You need:
+
+✅ **Completed positioning** - Who you're for, what alternatives exist, why you're different
+✅ **Best-fit customers defined** - Who gets the most value
+✅ **Differentiated value** - Clear unique value proposition
+
+**If you haven't done positioning:**
+→ Use the `positioning` skill first
+→ Complete positioning canvas
+→ Then return here for messaging
+```
+
+#### In Related Skills Section
+
+```markdown
+## Related Skills
+
+**Prerequisites (complete first):**
+- **`positioning`** - Create positioning before messaging
+
+**Next steps after messaging:**
+- **`rollout-and-launch`** - Roll out messaging internally and launch externally
+
+**Complementary skills:**
+- **`competitive-intelligence`** - Competitive differentiation in messaging
+- **`gtm-strategy`** - Full go-to-market orchestration
+```
+
+### Benefits of Modular Skills
+
+**1. Clear Boundaries**
+- Each skill has a focused purpose
+- No overlap or redundancy
+- Easier to maintain and update
+
+**2. Reusability**
+- `positioning` skill can be used standalone OR as foundation for messaging
+- `rollout-and-launch` skill can deploy ANY messaging, not just from this workflow
+- Skills are building blocks, not monoliths
+
+**3. Better Token Management**
+- Loading only `positioning` = ~3-5K tokens
+- Loading only `messaging` = ~4-6K tokens
+- Loading only `rollout-and-launch` = ~5-7K tokens
+- Total if needed: ~12-18K tokens (vs 25-30K for monolithic skill)
+
+**4. Easier Navigation**
+- Users download only what they need
+- Claude loads only relevant skills
+- SKILL.md stays focused and scannable
+
+**5. Parallel Development**
+- Different people can work on different skills
+- Update one skill without affecting others
+- Test and refine independently
+
+### When to Split Into Multiple Skills
+
+**Split when:**
+
+✅ **Clear boundaries exist** - Distinct phases/processes (positioning ≠ messaging ≠ launch)
+✅ **Independent usage** - Each skill valuable on its own
+✅ **Reusability** - Skill useful in multiple workflows
+✅ **Size threshold** - Combined skill would be 20+ files or 3K+ lines in SKILL.md
+✅ **Different timelines** - Activities happen weeks apart (positioning → messaging → launch)
+
+**Keep together when:**
+
+❌ **Tight coupling** - Concepts inseparable (multi-audience messaging = one skill)
+❌ **Small size** - Total content < 10 files
+❌ **No reusability** - Techniques only useful together
+❌ **Same timeline** - Activities happen simultaneously
+
+### Modular Skill Examples
+
+#### Good Split: Positioning → Messaging → Rollout
+
+**Why it works:**
+- Clear boundaries (different frameworks, different outputs)
+- Independent value (can do just positioning, or just rollout)
+- Natural sequence (positioning feeds messaging feeds rollout)
+- Different timelines (weeks apart)
+
+```
+positioning/
+├── SKILL.md
+├── references/core/
+│   └── 01-positioning-foundation.md (April Dunford)
+└── assets/positioning-canvas-template.md
+
+messaging/
+├── SKILL.md → Prereq: positioning
+├── references/core/
+│   ├── 02-pain-claim-gain-messaging.md
+│   ├── 03-multi-audience-messaging.md
+│   └── 04-message-architecture.md
+└── assets/messaging-canvas-template.md
+
+rollout-and-launch/
+├── SKILL.md → Prereq: positioning, messaging
+├── references/core/
+│   ├── 01-message-testing.md
+│   ├── 02-internal-rollout.md
+│   ├── 03-workshop-facilitation.md
+│   └── 04-external-launch.md
+└── assets/launch-checklist.md
+```
+
+#### Bad Split: Message Testing ≠ Message Iteration
+
+**Why it fails:**
+- Too tightly coupled (testing informs iteration immediately)
+- No independent value (testing without iteration is incomplete)
+- Same timeline (happen together)
+- Both part of same feedback loop
+
+**Better:** Keep testing and iteration in same skill (rollout-and-launch)
+
+### How Claude Loads Multiple Skills
+
+**Model-Invoked:**
+- Claude reads skill descriptions from SKILL.md YAML
+- Autonomously decides which skills to activate
+- Can load multiple skills in same conversation
+
+**Example user request:**
+"Help me create positioning and messaging for my product"
+
+**Claude's response:**
+1. Loads `positioning` skill (sees description matches "create positioning")
+2. After positioning complete, loads `messaging` skill (sees prerequisite met)
+3. References both skills throughout conversation
+
+**User can also explicitly invoke:**
+"Use the positioning skill to help me with this"
+
+### Managing Shared Content
+
+**Problem:** Multiple skills need same information (e.g., acronyms, frameworks)
+
+**Solution 1: Duplicate in Each Skill** (Recommended for downloads)
+- Each skill is self-contained
+- Users download complete skill, no dependencies
+- Slight redundancy but better user experience
+
+```
+positioning/glossary/positioning-terms.md
+messaging/glossary/pmm-acronyms.md  # Some overlap OK
+rollout-and-launch/glossary/pmm-acronyms.md
+```
+
+**Solution 2: Reference Shared Skill** (If shared content is large)
+- Create `pmm-foundations` skill with shared frameworks
+- Other skills reference it as prerequisite
+- Use when >5 files would be duplicated
+
+```
+pmm-foundations/
+├── glossary/acronyms.md (MEDDIC, ICP, etc.)
+└── frameworks/april-dunford.md
+
+positioning/
+├── SKILL.md → Prereq: pmm-foundations
+└── references/...
+
+messaging/
+├── SKILL.md → Prereq: pmm-foundations
+└── references/...
+```
+
+**Our approach:** Duplicate small glossaries (2-3 files) for self-contained skills.
+
+### Versioning Modular Skills
+
+**Question:** What if `messaging` skill changes but `positioning` stays the same?
+
+**Answer:** Each skill versions independently:
+- Update `messaging` v2.0
+- `positioning` stays v1.0
+- Skills reference each other by name, not version
+- If breaking changes, update SKILL.md prerequisites section
+
+**Best practice:**
+- Make skills backward compatible when possible
+- If breaking changes needed, communicate in SKILL.md
+- Example: "Works with positioning v1.x and v2.x"
+
+### Decision Framework: Modular vs Monolithic
+
+```
+Start with one skill
+↓
+Does it have 15+ files? → NO → Keep as one skill
+↓ YES
+↓
+Are there clear phase boundaries? → NO → Use organizational patterns within skill
+↓ YES
+↓
+Would each phase be useful alone? → NO → Use phase-based folders in one skill
+↓ YES
+↓
+Do phases happen weeks apart? → NO → Consider keeping together
+↓ YES
+↓
+Split into modular skills ✓
+```
+
+**Example decision:**
+
+**Skill:** Product Marketing Master Class (40 files)
+- Positioning (6 files)
+- Messaging (10 files)
+- Testing (8 files)
+- Launch (12 files)
+- Sales enablement (4 files)
+
+**Analysis:**
+✅ 15+ files (40 total)
+✅ Clear phase boundaries (5 distinct phases)
+✅ Each phase useful alone (yes - can do just positioning)
+✅ Weeks apart (positioning Week 1, messaging Week 2-3, testing Week 4, launch Week 5-8)
+
+**Decision:** Split into 3-4 modular skills:
+1. `positioning` (6 files) - standalone
+2. `messaging` (10 files) - depends on positioning
+3. `rollout-and-launch` (20 files) - depends on positioning + messaging, includes testing
+4. `sales-enablement` (4 files) - depends on messaging, could be standalone or part of rollout
 
 ---
 
