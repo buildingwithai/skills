@@ -1,10 +1,12 @@
-# Content-Driven Business Strategy
+# Viral Validation Lab
 
-**An interactive advisory skill that evaluates ideas, prioritizes features, and generates viral content concepts based on what can actually be created, shared, and cause buzz.**
+**Test demand through viral content before building anything.**
+
+An interactive lab where you bring product ideas, features, or creative concepts, and we validate them through viral content—before you spend a dollar on development.
 
 ## Overview
 
-This skill flips the traditional business model: instead of building a product then figuring out marketing, you validate demand through viral content FIRST, then build the product.
+The Lab flips the traditional business model: instead of building a product then figuring out marketing, you validate demand through viral content FIRST, then build the product.
 
 **Core Philosophy:**
 ```
