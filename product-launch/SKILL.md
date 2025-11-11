@@ -9,6 +9,46 @@ Master the complete discipline of launching products like the top 1% of product 
 
 **📊 RESEARCH-BACKED**: Built from extensive 2024-2025 research across Product Marketing Alliance, LinkedIn trends, Reddit communities, industry podcasts (Lenny Rachitsky), frameworks from leading practitioners (April Dunford, Dave McClure), and real-world case studies.
 
+## 🔗 Foundation Skills & Integration
+
+**This skill integrates with:**
+
+### **multi-audience-product-messaging** (PREREQUISITE)
+For positioning, messaging, and sales enablement foundations, use the **multi-audience-product-messaging** skill:
+- **Positioning** → April Dunford's framework, competitive analysis, differentiation
+- **Messaging** → Pain-Claim-Gain, value propositions, multi-audience communication
+- **Persona Mapping** → B2B stakeholders (P1: Users, P2: Champions, P3: Economic Buyers)
+- **Message Testing** → Wynter, UserTesting, validation frameworks
+- **Workshop Facilitation** → Running positioning workshops, managing stakeholders
+- **Sales Enablement** → Battlecards, MEDDIC mapping, discovery questions, competitive trap-setting
+- **Internal Rollout** → Getting cross-functional buy-in
+
+**When to use which skill:**
+- **Starting from scratch?** → Use `multi-audience-product-messaging` FIRST to create positioning and messaging, THEN use this skill for launch execution
+- **Have clear positioning/messaging?** → Use this skill directly for launch planning and execution
+- **Need messaging help during launch planning?** → Reference `multi-audience-product-messaging` at any point
+
+**Integration points:** This skill's references will explicitly point to the messaging skill where appropriate (positioning, messaging, battlecards, etc.)
+
+---
+
+### **About Personas & Buyer Intelligence**
+
+**Personas are covered in the messaging skill** via the multi-audience approach:
+- **P1 (Users):** Technical users, day-to-day operators → Care about: "Does it work? Is it easy?"
+- **P2 (Champions):** Internal advocates → Care about: "Can I sell this internally?"
+- **P3 (Economic Buyers):** Budget holders, executives → Care about: "What's the ROI? What's the risk?"
+
+**For deeper buyer intelligence needs:**
+- **Customer discovery** → Covered in `07-lean-beta-testing.md` (this skill) + Jobs-to-be-Done framework
+- **ICP refinement** → Covered in `04-positioning-strategy.md` (this skill) + `01-positioning-foundation.md` (messaging skill)
+- **Competitive intelligence** → Covered in `advanced/competitive-intelligence.md` (this skill) + `11-sales-stage-competitive-strategy.md` (messaging skill)
+- **Market segmentation** → Covered in `advanced/market-segmentation.md` (this skill)
+
+**No separate persona skill needed** - the multi-audience-product-messaging skill covers personas comprehensively within the context of messaging, and this skill covers buyer discovery in the context of launch planning.
+
+---
+
 ## When to Use This Skill
 
 Use this skill when you need to:
@@ -19,10 +59,12 @@ Use this skill when you need to:
 - **Reposition existing products** with new GTM strategy
 - **Plan and execute** 90-day launch roadmaps
 - **Coordinate cross-functional** product launch teams
-- **Enable sales teams** for new product offerings
+- **Enable sales teams** for new product offerings (use with multi-audience-product-messaging)
 - **Build launch strategies** as a solopreneur or within enterprise teams
 - **Optimize post-launch** growth and retention
 - **Learn from failures** and improve launch execution
+
+**Prerequisites:** Clear product positioning and messaging (use multi-audience-product-messaging skill if needed)
 
 ## Launch Success Statistics (2024 Data)
 
@@ -73,18 +115,76 @@ DISCOVER → STRATEGY → BUILD → PREPARE → LAUNCH → GROW → OPTIMIZE
 
 This skill uses **progressive disclosure** - access exactly what you need for your launch context.
 
+### 🔄 Skill Integration Workflow
+
+**Complete Launch Workflow (Using Both Skills):**
+
+```
+STEP 1: POSITIONING & MESSAGING (multi-audience-product-messaging skill)
+├─ Positioning workshop (April Dunford framework)
+├─ Pain-Claim-Gain messaging development
+├─ Multi-audience persona mapping (P1/P2/P3)
+├─ Message testing (Wynter, UserTesting)
+└─ Internal rollout and buy-in
+
+STEP 2: LAUNCH PLANNING & EXECUTION (this skill)
+├─ Launch tier determination
+├─ 90-day roadmap creation
+├─ GTM strategy selection
+├─ Beta testing and validation
+├─ Multi-channel marketing
+└─ Launch day execution
+
+STEP 3: SALES ENABLEMENT (multi-audience-product-messaging skill)
+├─ Battlecards creation
+├─ MEDDIC-stage messaging
+├─ Competitive trap-setting
+└─ Champion enablement
+
+STEP 4: POST-LAUNCH OPTIMIZATION (this skill)
+├─ Metrics tracking (AARRR)
+├─ Iteration cycles
+└─ Growth optimization
+```
+
+**Decision Tree: Which Skill Do I Need?**
+
+| Your Need | Use This Skill | Use Messaging Skill |
+|-----------|----------------|---------------------|
+| Don't have clear positioning yet | ← | ✅ START HERE |
+| Need to develop value propositions | ← | ✅ |
+| Need to test messaging effectiveness | ← | ✅ |
+| Running positioning workshops | ← | ✅ |
+| Planning a product launch | ✅ | ← |
+| Building 90-day launch roadmap | ✅ | ← |
+| Choosing GTM strategy | ✅ | ← |
+| Launch day execution | ✅ | ← |
+| Creating sales battlecards | ← | ✅ (detailed) |
+| Sales stage-specific messaging | ← | ✅ |
+| Post-launch growth and PLG | ✅ | ← |
+| Community launch tactics | ✅ | ← |
+| Internal rollout of messaging | ← | ✅ |
+| Need both positioning AND launch | ✅ Both skills | ✅ |
+
+---
+
 ### 🎯 Quick Path Selection
 
-**I'm a SOLOPRENEUR launching:**
+**I'm STARTING FROM SCRATCH (no positioning/messaging yet):**
+1. **FIRST:** Use `multi-audience-product-messaging` skill to create positioning and messaging (4-6 weeks)
+2. **THEN:** Return to this skill for launch planning and execution
+
+**I HAVE positioning/messaging and I'm a SOLOPRENEUR launching:**
 → Start with `references/core/01-solopreneur-launch-playbook.md`
 → Then: 04-positioning-strategy → 07-lean-beta-testing → 12-community-launch-tactics → 15-post-launch-plg
 
-**I'm launching in an ENTERPRISE with teams:**
+**I HAVE positioning/messaging and launching in ENTERPRISE:**
 → Start with `references/core/02-enterprise-launch-coordination.md`
 → Then: 03-launch-tier-framework → 05-90-day-roadmap → 09-cross-functional-raci → 10-sales-enablement
 
 **I'm doing a TIER 1 major launch:**
-→ Read: 03-launch-tier-framework → 05-90-day-roadmap → 06-gtm-strategy → 08-pricing-packaging → 09-cross-functional-raci → 10-sales-enablement → 11-multi-channel-marketing → 13-launch-day-playbook → 14-crisis-management
+→ Confirm positioning first (use messaging skill if needed)
+→ Then: 03-launch-tier-framework → 05-90-day-roadmap → 06-gtm-strategy → 08-pricing-packaging → 09-cross-functional-raci → 10-sales-enablement → 11-multi-channel-marketing → 13-launch-day-playbook → 14-crisis-management
 
 **I'm doing a TIER 2-3 feature release:**
 → Read: 03-launch-tier-framework → 07-lean-beta-testing → 12-community-launch-tactics → 16-metrics-kpis → 17-iteration-framework
@@ -115,11 +215,13 @@ This skill uses **progressive disclosure** - access exactly what you need for yo
    - When to change tier mid-planning
 
 4. **`references/core/04-positioning-strategy.md`**
-   - April Dunford positioning framework
+   **⚠️ OR USE:** `../multi-audience-product-messaging/references/core/01-positioning-foundation.md` for deep positioning work
+   - April Dunford positioning framework (5 components, 10-step process)
    - Competitive landscape analysis
    - Best-fit customer identification
    - Value proposition development
    - Category positioning (leader/challenger/nicher)
+   - **When to use messaging skill instead:** If you need positioning workshops, detailed facilitation, or starting from scratch
 
 **PHASE 2: STRATEGY & PLANNING (Weeks 5-8)**
 
@@ -138,11 +240,13 @@ This skill uses **progressive disclosure** - access exactly what you need for yo
    - Pricing and packaging strategy
 
 7. **`references/core/07-lean-beta-testing.md`**
+   **INTEGRATES WITH:** `../multi-audience-product-messaging/references/core/07-testing-iteration-EXPANDED.md` for message testing
    - Beta testing program design
    - Closed vs open beta decisions
    - Customer feedback loops
    - Jobs-to-be-done validation
    - AI-powered feedback analysis (2024)
+   - **Use messaging skill for:** Testing value propositions, homepage messaging, email campaigns (Wynter, UserTesting platforms)
 
 8. **`references/core/08-pricing-packaging.md`**
    - Value-based pricing strategies
@@ -161,11 +265,13 @@ This skill uses **progressive disclosure** - access exactly what you need for yo
    - Stakeholder management tactics
 
 10. **`references/core/10-sales-enablement.md`**
-    - Sales battlecards (product, competitor, objection-handling)
-    - Discovery question frameworks
-    - Value proposition training
-    - Demo environment setup
+    **⚠️ USE MESSAGING SKILL FOR DEEP ENABLEMENT:** `../multi-audience-product-messaging/references/core/09-sales-enablement-integration.md` and `11-sales-stage-competitive-strategy.md`
+    - Sales battlecards (product, competitor, objection-handling) ← **See messaging skill for detailed battlecard templates**
+    - Discovery question frameworks ← **See messaging skill for MEDDIC-mapped questions**
+    - Value proposition training ← **See messaging skill for workshop facilitation**
+    - Demo environment setup (launch-specific)
     - Sales toolkit creation
+    - **Use messaging skill for:** Competitive trap-setting, sales stage messaging, champion enablement, internal rollout
 
 11. **`references/core/11-multi-channel-marketing.md`**
     - Website and SEO optimization
@@ -692,8 +798,12 @@ This skill uses **progressive disclosure** - access exactly what you need for yo
 - [ ] Are you a solopreneur or part of a team?
 - [ ] What's your timeline constraint? (Ideal vs real)
 - [ ] What's your budget? (<$10K / $10-50K / $50-100K / $100K+)
-- [ ] Do you have clear positioning? (If no, start with 04-positioning-strategy)
+- [ ] **Do you have clear positioning?** (If NO → **USE multi-audience-product-messaging skill FIRST**)
+- [ ] **Do you have validated messaging?** (If NO → **USE multi-audience-product-messaging skill FIRST**)
 - [ ] Have you validated customer need? (If no, start with customer discovery)
+- [ ] Do you have sales battlecards? (If NO → **USE multi-audience-product-messaging skill for deep enablement**)
+
+**⚠️ CRITICAL:** If you answered NO to positioning or messaging questions, **STOP HERE** and use the `multi-audience-product-messaging` skill first. You cannot launch effectively without clear positioning and messaging.
 
 ### Step 2: Choose Your Playbook
 
@@ -722,10 +832,13 @@ This skill uses **progressive disclosure** - access exactly what you need for yo
 ### Step 3: Load Relevant References
 
 Based on your gaps and needs, progressively load:
-- **Missing positioning?** → `04-positioning-strategy.md`
-- **Need pricing help?** → `08-pricing-packaging.md`
-- **Confused about GTM motion?** → `06-gtm-strategy.md`
-- **Platform-specific launch?** → `advanced/product-hunt-mastery.md`, `advanced/linkedin-launch-strategy.md`, etc.
+- **Missing positioning?** → **USE `../multi-audience-product-messaging/references/core/01-positioning-foundation.md`** (complete April Dunford framework + workshops)
+- **Need messaging development?** → **USE `../multi-audience-product-messaging/references/core/02-pain-claim-gain-messaging.md`** (value propositions)
+- **Need to test messaging?** → **USE `../multi-audience-product-messaging/references/core/07-testing-iteration-EXPANDED.md`** (Wynter, platforms, frameworks)
+- **Need sales battlecards?** → **USE `../multi-audience-product-messaging/references/core/09-sales-enablement-integration.md`** (detailed templates)
+- **Need pricing help?** → `08-pricing-packaging.md` (this skill)
+- **Confused about GTM motion?** → `06-gtm-strategy.md` (this skill)
+- **Platform-specific launch?** → `advanced/product-hunt-mastery.md`, `advanced/linkedin-launch-strategy.md`, etc. (this skill)
 
 ### Step 4: Use Templates to Organize Work
 
